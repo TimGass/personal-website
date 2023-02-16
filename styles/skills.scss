@@ -1,0 +1,78 @@
+#skillsPage {
+  .hero-overlay {
+    position: relative;
+    .hero {
+      background-color: rgba($color: #211200, $alpha: 0.2);
+      height: 100vh;
+      display: block;
+      position: relative;
+    }
+  }
+}
+
+div.content#list {
+  font-size: 1.4em;
+  display: block;
+  font-family: 'Montserrat';
+  padding: 5vh 15vw 0 15vw;
+  background-color: white;
+  text-align: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    text-align: justify;
+
+    li {
+      p {
+        font-family: 'Montserrat  ';
+        text-align: justify;
+        line-height: 1.6em;
+      }
+    }
+  }
+
+  h1 {
+    font-family: 'Raleway';
+  }
+
+  h2 {
+    font-family: 'Raleway';
+  }
+
+  a {
+    margin: 0 auto;
+    padding: 5vh 0;
+    text-decoration: none;
+    font-family: 'Raleway';
+    font-weight: bold;
+    display: inline-block;
+    color: #000000;
+    font-size: 2em;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  div.content#list {
+    ul {
+      li {
+        h2 {
+          margin-bottom: 1.5vh;
+        }
+        p {
+          margin-top: 0;
+          text-align: left;
+          padding: 0 0 0 1em;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  #skillsPage {
+    .hero-overlay {
+      background-position: 0% top;
+    }
+  }
+}

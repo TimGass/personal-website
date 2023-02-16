@@ -1,0 +1,84 @@
+header.header {
+  padding: 0;
+  margin: 0;
+
+  div {
+    padding-top: 6em;
+    display: inline-block;
+
+    &.headerLeft {
+      margin-left: 5vw;
+    }
+
+    &.headerRight {
+      margin-right: 5vw;
+      display: block;
+      float: right;
+
+      a {
+        float: right;
+        position: relative;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: #ffffff;
+      margin-left: 5vw;
+      font-size: 2.5em;
+      text-shadow: 0.02em 0.02em 0.02em rgba(0, 0, 0, 1);
+
+      &.active {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  header.header {
+    div {
+      padding-top: 0;
+
+      &.headerLeft {
+        width: 85vw;
+        margin-right: 5vw;
+      }
+
+      &.headerRight {
+        width: 85vw;
+        float: none;
+        margin-left: 5vw;
+
+        a {
+          float: none;
+        }
+      }
+
+      a {
+        font-size: 2em;
+        padding: 0.5em 0;
+        display: inline-block;
+
+        &:nth-child(2) {
+          float: right;
+        }
+
+        &:nth-child(3) {
+          float: right;
+        }
+      }
+    }
+  }
+
+  div#portfolioPage {
+    header.header {
+      div.headerLeft {
+        float: left;
+        a:nth-child(2) {
+          float: left;
+        }
+      }
+    }
+  }
+}

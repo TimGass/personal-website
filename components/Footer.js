@@ -1,11 +1,23 @@
-import styles from './Footer.module.css'
+import Link from 'next/link';
 
-export default function Footer() {
+export default function Footer({ linkArray }) {
   return (
-    <>
-      <footer className={styles.footer}>
-        Made with <img src="/netliheart.svg" alt="Netlify Logo" className={styles.logo} /> for you
-      </footer>
-    </>
-  )
+    <footer className="footer">
+      <Link href="/portfolio" className={linkArray[0]?"active":""}>
+        Portfolio
+      </Link>
+      <Link href="/skills" className={linkArray[1]?"active":""}>
+        Skills
+      </Link>
+      <Link href="/about" className={linkArray[2]?"active":""}>
+        About
+      </Link>
+      <a target="_blank" rel="noopener noreferrer" href={'./Resume.pdf'}>
+        Resume
+      </a>
+      <a href="mailto: timothyagass@gmail.com?subject=Reaching Out&body=Hi,">
+        Email
+      </a>
+    </footer>
+  );
 }

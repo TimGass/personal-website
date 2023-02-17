@@ -18,7 +18,7 @@ export default function Header({ linkArray }) {
         <a href="mailto: timothyagass@gmail.com?subject=Reaching Out&body=Hi,">
           Email
         </a>
-        <a target="_blank" rel="noopener noreferrer" href='./Resume.pdf'>
+        <a target="_blank" rel="noopener noreferrer" href='/Resume.pdf'>
           Resume
         </a>
       </div>

@@ -22,15 +22,14 @@
         font-family: 'Montserrat';
         line-height: 2em;
         padding: 2em 0 2em;
+        text-align: left;
       }
 
-      img.topImage {
-        display: block;
+      div.topImage {
         position: relative;
+        display: block;
         margin: 0 auto;
-        margin-left: auto;
-        margin-right: auto;
-        width: 42vw;
+        width: fit-content;
       }
 
       a{
@@ -41,44 +40,47 @@
         color: #000000;
         text-align: center;
         font-size: 1.2em;
-        width: 60%;
+        width: fit-content;
 
         &::after {
           content: '\A';
           position: absolute;
-          width: 100%; height:100%;
-          top:0; left:0;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
           background: rgba($color: #000000, $alpha: 0.6);
           opacity: 0;
           transition: all .5s;
           -webkit-transition: all 1s;
         }
-
+      
         &:hover {
           &::after {
             opacity: 1;
           }
-
+      
           div.descriptionText {
             opacity: 1;
             z-index: 1;
+      
             h3 {
               position: -webkit-sticky;
-              position: sticky; 
+              position: sticky;
               top: 20vh;
             }
           }
-
+      
           div.descriptionText-1 {
             h3 {
               position: unset;
             }
           }
-
+      
           div.Park-A-Lot.descriptionText-2 {
             h3 {
               position: unset;
-            } 
+            }
           }
         }
 
@@ -87,6 +89,8 @@
           margin-top: 1em;
           margin-bottom: 1em;
           font-weight: bold;
+          display: inline-block;
+          width: fit-content;
 
           &::after {
             display: none;
@@ -98,13 +102,14 @@
           text-decoration: none;
           color: #000000;
           border: 2px solid #000000;
-          padding: .2em .8em;
+          padding: .2em .2em;
           width: max-content;
           min-width: 30%;
           max-width: 100%;
           margin: 0 auto 3em auto;
           box-sizing: border-box;
           transition: all 1s;
+          position: relative;
 
           &::after {
             display: none;
@@ -114,17 +119,27 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            font-size: 1.4em;
-            line-height: 1.4em;
+            font-size: 1.2em;
+            line-height: 1.5em;
+            margin-left: .5em;
+            margin-right: .5em;
+            display: inline-block;
+            white-space: nowrap;
+          }
+
+          div#codeWrapper {
+            display: inline-block;
+            position: relative;
+            right: .2em;
+            top: .2em;
           }
 
           div#codeImage {
             width: 1.4em;
             height: 1.4em;
-            display: block;
-            float: right;
+            display: inline-block;
             position: relative;
-            margin: .1em 0 0 .4em;
+            margin: 0 .3em 0 .2em;
             background-image: url('../public/github.png');
             background-position: center;
             background-size: cover;
@@ -148,6 +163,7 @@
       img {
         position: relative;
         display: block;
+        margin: 0;
       }
 
       div.descriptionText {
@@ -217,8 +233,9 @@
   @media only screen and (min-width: 481px) and (max-width: 767px) {
     #projectsPage div#about {
 
-      img.topImage {
-        width: 100%;
+      div.topImage {
+        height: 52.5vw;
+        width: 70vw;
       }
 
       h1 {

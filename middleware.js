@@ -1,10 +1,8 @@
 import { NextResponse } from 'next/server'
-export async function middleware(req, ev) {
+export function middleware(req) {
     const { pathname } = req.nextUrl;
-    const url = req.nextUrl.clone() 
-    if (pathname == '/') {
-        url.pathname = "/portfolio";
-        return NextResponse.redirect(url);
+    if (pathname === '/') {
+        return NextResponse.redirect(new URL('/portfolio', req.url));
     }
     return NextResponse.next()
 }

@@ -1,71 +1,36 @@
 import '@styles/main.scss';
 import 'normalize.css/normalize.css';
-import Header from '@components/Header';
+import Top from '@components/Top';
 import Footer from '@components/Footer';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import $ from "jquery";
-import Link from 'next/link';
-import arrow from "../public/down.png";
-import Image from 'next/image';
-import LegacyImage from 'next/legacy/image';
 import { gtag, install } from 'ga-gtag';
 
 function Application({ Component, pageProps }) {
   const router = useRouter();
   const { pathname } = router;
   const { project } = router.query;
-  const linkArray = [false,false,false];
+  const linkArray = [false, false, false];
+
   switch(true) {
-    case pathname.includes('/about'): {
+    case project: {
+      linkArray[0] = true;
+      break;
+    };
+    
+    case pathname.startsWith('/about'): {
       linkArray[2] = true;
       break;
     };
 
-    case pathname.includes('/skills'): {
+    case pathname.startsWith('/skills'): {
       linkArray[1] = true;
       break;
     }
 
     default: {
       linkArray[0] = true;
-      break;
-    }
-  }
-  let name;
-  let link;
-  let title;
-  let background;
-  switch(true) {
-    case project: {
-      name = "portfolioPage";
-      link = project?"#about":"#projects"
-      title = "Portfolio";
-      background = "/whiteboard.jpg";
-      break;
-    };
-
-    case pathname.includes('/about'): {
-      name = "aboutPage";
-      link = "#me";
-      title = "About";
-      background = "/mountain.jpg";
-      break;
-    };
-
-    case pathname.includes('/skills'): {
-      name = "skillsPage";
-      link = "#list";
-      title = "Skills";
-      background = "/books.jpg";
-      break;
-    }
-
-    default: {
-      name = "portfolioPage";
-      link = "#projects";
-      title = "Portfolio";
-      background = "/whiteboard.jpg";
       break;
     }
   }
@@ -228,28 +193,8 @@ function Application({ Component, pageProps }) {
 
   return (
     <>
-      <div id={name} className="pageDiv">
-        <div className="scrollbarTrack">
-          <div className="scrollbarThumb" />
-        </div>
-        <div className="hero-overlay">
-          <LegacyImage src={background} layout="fill" sizes='100vw' priority={true} objectFit={"cover"} />
-          <div className="hero">
-            <Header linkArray={linkArray} />
-            <h1 className="title">{title}</h1>
-            <div className="descriptionLink" style={{ display: 'inline-block' }}>
-              <Link
-                href={`${link}`}
-                scroll={false}
-                style={{ position: 'relative', display: "inline-block", width: "2.5em", height: "2.5em", margin: "0 auto"}}
-              >
-                <Image src={arrow} className="arrow-down" fill sizes='2.5em'/>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Component {...pageProps} />
+      <Top linkArray={linkArray} project={project} />
+      <Component {...pageProps} project={project} />
       <Footer linkArray={linkArray} />
     </>
   );

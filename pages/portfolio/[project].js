@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import projectList from '@js/projectList';
 import { useState } from 'react';
+import Head from 'next/head';
 
 export default function Project({ project }) {
   let currentProject = { name: null, body: null, code: null, id: null, bottomImages: [], topImage: null };
@@ -54,6 +55,9 @@ export default function Project({ project }) {
 
   return (
     <div id="projectsPage">
+      <Head>
+        <title>Tim Gass | {currentProject.name}</title>
+      </Head>
       <div id={currentProject.id}>
         <div id='about'>
           {currentProject.topImage}

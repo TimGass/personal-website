@@ -138,10 +138,10 @@ function handleResize() {
 
 export default function Top({ linkArray, name, title, link, project }) {
   useEffect(() => {
-  handleResize();
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, []); // Empty array ensures that effect is only run on mount
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
 
   return (
     <div id={name} className="pageDiv">

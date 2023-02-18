@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Portfolio() {
   return (
@@ -7,9 +8,11 @@ export default function Portfolio() {
         <ul>
           <li>
             <Link href="/portfolio/park-a-lot#about" scroll={false}>
-              <img
-                id="park"
-                rel="A picture of the web API known as Park-A-Lot."
+              <Image
+                fill
+                src={'/Park-A-Lot.png'}
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
+                alt="A picture of the web API known as Park-A-Lot."
               />
               <div className="project-description">
                 <h3>Park-A-Lot</h3>
@@ -19,9 +22,11 @@ export default function Portfolio() {
           </li>
           <li>
             <Link href="/portfolio/chronophobia#about" scroll={false}>
-              <img
-                id="chronophobia"
-                rel="A picture of the web API known as chronophobia."
+              <Image
+                fill
+                src={'/Chronophobia.png'}
+                style={{ objectFit: 'cover', objectPosition: 'left' }}
+                alt="A picture of the web API known as chronophobia."
               />
               <div className="project-description">
                 <h3>Chronophobia</h3>
@@ -31,9 +36,11 @@ export default function Portfolio() {
           </li>
           <li>
             <Link href="/portfolio/acquali#about" scroll={false}>
-              <img
-                id="acquali"
-                rel="A picture of the front-end of a webtool known as the Acquali wordcloud tool."
+              <Image
+                fill
+                src={"/Acquali.png"}
+                style={{ objectFit: 'cover', objectPosition: '57% top' }}
+                alt={"A picture of the front-end of a webtool known as the Acquali wordcloud tool."}
               />
               <div className="project-description">
                 <h3>Acquali</h3>
@@ -43,9 +50,11 @@ export default function Portfolio() {
           </li>
           <li>
             <Link href="/portfolio/goals#about" scroll={false}>
-              <img
-                id="goals"
-                rel="A picture of the Goals splash page, with a soccer goal."
+              <Image
+                fill
+                src={'/Goals.png'}
+                style={{ objectFit: 'cover', objectPosition: 'right top' }}
+                alt={"A picture of the Goals splash page, with a soccer goal."}
               />
               <div className="project-description">
                 <h3>Goals</h3>
@@ -55,9 +64,11 @@ export default function Portfolio() {
           </li>
           <li>
             <Link href="/portfolio/github-recreation#about" scroll={false}>
-              <img
-                id="github"
-                rel="A picture of a recreation of TimGass' GitHub Repo page."
+              <Image
+                fill
+                src={"/github-recreation.png"}
+                alt="A picture of a recreation of TimGass' GitHub Repo page."
+                style={{ objectFit: 'cover', objectPosition: '13% top' }}
               />
               <div className="project-description">
                 <h3>Github Recreation</h3>
@@ -67,9 +78,11 @@ export default function Portfolio() {
           </li>
           <li>
             <Link href="/portfolio/powell-peralta-recreation#about" scroll={false}>
-              <img
-                id="powell"
-                rel="A picture of a Powell-Peralta splash page recreation, with skaters and skateboarders, and custom skull logo"
+              <Image
+                fill
+                src={"/PowellPeralta.png"}
+                alt={"A picture of a Powell-Peralta splash page recreation, with skaters and skateboarders, and custom skull logo."}
+                style={{ objectFit: 'cover', objectPosition: 'right' }}
               />
               <div className="project-description">
                 <h3>Powell-Peralta Recreation</h3>

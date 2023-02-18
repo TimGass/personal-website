@@ -6,39 +6,41 @@ import Head from 'next/head';
 
 export default function Project({ project }) {
   let currentProject = { name: null, body: null, code: null, id: null, bottomImages: [], topImage: null };
-  const [height1, setHeight1] = useState(672);
-  const [height2, setHeight2] = useState(560);
-  const [height3, setHeight3] = useState(1600);
+  const [height, setHeight] = useState(1600);
+  const [topHeight, setTopHeight] = useState(0);
+
   if(project) {
     let bottomImages;
     let topImage;
     let currentProjectTemp = projectList[project];
     const images = currentProjectTemp.images.map((image, index) => {
       if(index === 0 && currentProjectTemp.images.length > 1) {
-        return <div className='topImage'>
+        return <div className='topImage' style={topHeight===0?{}:{ height: topHeight }}>
               <Image src={image.src} key={index} alt=''
                 sizes="(max-width: 767px) 70vw,
                         42vw"
-                width={window.innerWidth * .42}
-                height={height1}
                 priority={true}
-                onLoadingComplete={({ naturalWidth, naturalHeight }) => {
-                    const ratio = naturalWidth/naturalHeight;
-                    setHeight1((window.innerWidth>767?window.innerWidth*.42:window.innerWidth*.7)/ratio);
+                fill
+                onLoadingComplete={({ naturalHeight, naturalWidth }) => {
+                  let ratio = naturalWidth/naturalHeight;
+                  setTopHeight((window.innerWidth>767?window.innerWidth*.42:window.innerWidth*.7)/ratio);
                 }}
-                style={{ margin: 'none' }}
               />
               </div>;
       }
+      else if(index === 1 && currentProjectTemp.images.length > 2) {
+        return (<a href={image.link} key={index} className={`bottomImage1`}>
+        <Image src={image.src} sizes="(max-width: 767p) 70vw, 42vw" fill alt='' style={{ margin: "0 auto" }} />
+        <div className={`descriptionText descriptionText-${index+1} ${currentProjectTemp.name}`}>
+          <h3>{image.description}</h3>
+        </div>
+      </a>);
+      }
       return (<a href={image.link} key={index}>
-        <Image src={image.src} sizes="(max-width: 767p) 70vw, 42vw" width={window.innerWidth * .42} height={index===1?height2:height3} alt='' onLoadingComplete={({ naturalHeight, naturalWidth }) => {
-            if(index===1) {
-              setHeight2(naturalHeight);
-            }
-            else {
-              setHeight3(naturalHeight);
-            }
-        }} />
+        <Image src={image.src} sizes="(max-width: 767p) 70vw, 42vw" width={window?window.innerWidth * .42:806.4} height={height} alt='' onLoadingComplete={({ naturalHeight, naturalWidth }) => {
+          const ratio = naturalWidth/naturalHeight;
+          setHeight((window.innerWidth>767?window.innerWidth*.42:window.innerWidth*.7)/ratio);
+        }} style={{ margin: "0 auto" }} />
         <div className={`descriptionText descriptionText-${index+1} ${currentProjectTemp.name}`}>
           <h3>{image.description}</h3>
         </div>

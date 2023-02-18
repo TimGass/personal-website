@@ -28,7 +28,8 @@
       position: relative;
       display: block;
       margin: 0 auto;
-      width: fit-content;
+      width: 42vw;
+      height: 31.5vw;
     }
 
     a{
@@ -40,6 +41,11 @@
       text-align: center;
       font-size: 1.2em;
       width: fit-content;
+
+      &.bottomImage1 {
+        width: 42vw;
+        height: 31.5vw;
+      }
 
       &::after {
         content: '\A';

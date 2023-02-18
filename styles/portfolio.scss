@@ -54,6 +54,7 @@ div#projects {
         margin-right: 3.5vw;
         margin-left: 7.5vw;
         width: 26vw;
+        height: 26vw;
         margin-top: 5vw;
         margin-bottom: 2vw;
         text-decoration: none;
@@ -65,6 +66,7 @@ div#projects {
           0 6px 20px 0 rgba(0, 0, 0, 0.2);
         -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8),
           0 6px 20px 0 rgba(0, 0, 0, 0.2);
+        
 
         div.project-description {
           position: absolute;
@@ -83,46 +85,6 @@ div#projects {
 
           p {
             padding: 0;
-          }
-        }
-
-        img {
-          width: 100%;
-          height: 26vw;
-          display: block;
-          position: relative;
-          background-attachment: local;
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-
-          &#park {
-            background-image: url('../public/Park-A-Lot.png');
-          }
-
-          &#chronophobia {
-            background-image: url('../public/Chronophobia.png');
-            background-position: left;
-          }
-
-          &#acquali {
-            background-image: url('../public/Acquali.png');
-            background-position: 57% top;
-          }
-
-          &#goals {
-            background-image: url('../public/Goals.png');
-            background-position: 100% top;
-          }
-
-          &#github {
-            background-image: url('../public/github-recreation.png');
-            background-position: 13% top;
-          }
-
-          &#powell {
-            background-image: url('../public/PowellPeralta.png');
-            background-position: right;
           }
         }
 

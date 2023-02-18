@@ -78,7 +78,7 @@ function Application({ Component, pageProps }) {
         <title>{project?"Tim Gass":`Tim Gass | ${title}`}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Top linkArray={linkArray} title={title} link={link} name={name} />
+      <Top linkArray={linkArray} title={title} link={link} name={name} project={project}/>
       <Component {...pageProps} project={project}/>
       <Footer linkArray={linkArray} />
     </>

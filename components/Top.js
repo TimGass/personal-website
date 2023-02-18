@@ -136,7 +136,7 @@ function handleResize() {
   }
 }
 
-export default function Top({ linkArray, name, title, link }) {
+export default function Top({ linkArray, name, title, link, project }) {
   useEffect(() => {
   handleResize();
   window.addEventListener('resize', handleResize);
@@ -157,7 +157,7 @@ export default function Top({ linkArray, name, title, link }) {
           <h1 className="title">{title}</h1>
           <div className="descriptionLink" style={{ display: 'inline-block' }}>
             <Link
-              href={link}
+              href={project?"#about":link}
               scroll={false}
               style={{ position: 'relative', display: "inline-block", width: "2.5em", height: "2.5em", margin: "0 auto"}}
             >

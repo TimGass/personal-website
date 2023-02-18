@@ -12,7 +12,7 @@ export default function Footer({ linkArray }) {
       <Link href="/about" className={linkArray[2]?"active":""}>
         About
       </Link>
-      <a target="_blank" rel="noopener noreferrer" href={'./Resume.pdf'}>
+      <a target="_blank" rel="noopener noreferrer" href={'/Resume.pdf'}>
         Resume
       </a>
       <a href="mailto: timothyagass@gmail.com?subject=Reaching Out&body=Hi,">

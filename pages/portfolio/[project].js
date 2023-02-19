@@ -1,13 +1,27 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import projectList from '@js/projectList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 
 export default function Project({ project }) {
   let currentProject = { name: null, body: null, code: null, id: null, bottomImages: [], topImage: null };
-  const [height, setHeight] = useState(1600);
-  const [topHeight, setTopHeight] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined"?window.innerWidth:1980);
+  const [ratio, setRatio] = useState(1/8);
+  const [topRatio, setTopRatio] = useState(4/3);
+
+  const handleResize = () => {
+    if(windowWidth !== window.innerWidth) {
+      setWindowWidth(window.innerWidth);
+    }
+  };
+
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  });
 
   if(project) {
     let bottomImages;
@@ -15,15 +29,14 @@ export default function Project({ project }) {
     let currentProjectTemp = projectList[project];
     const images = currentProjectTemp.images.map((image, index) => {
       if(index === 0 && currentProjectTemp.images.length > 1) {
-        return <div className='topImage' style={topHeight===0?{}:{ height: topHeight }}>
+        return <div className='topImage' style={{ height: (windowWidth>767?windowWidth*.42:windowWidth*.7)/topRatio }}>
               <Image src={image.src} key={index} alt=''
                 sizes="(max-width: 767px) 70vw,
                         42vw"
                 priority={true}
                 fill
                 onLoadingComplete={({ naturalHeight, naturalWidth }) => {
-                  let ratio = naturalWidth/naturalHeight;
-                  setTopHeight((window.innerWidth>767?window.innerWidth*.42:window.innerWidth*.7)/ratio);
+                  setTopRatio(naturalWidth/naturalHeight);
                 }}
               />
               </div>;
@@ -37,9 +50,8 @@ export default function Project({ project }) {
       </a>);
       }
       return (<a href={image.link} key={index}>
-        <Image src={image.src} sizes="(max-width: 767p) 70vw, 42vw" width={window?window.innerWidth * .42:806.4} height={height} alt='' onLoadingComplete={({ naturalHeight, naturalWidth }) => {
-          const ratio = naturalWidth/naturalHeight;
-          setHeight((window.innerWidth>767?window.innerWidth*.42:window.innerWidth*.7)/ratio);
+        <Image src={image.src} sizes="(max-width: 767p) 70vw, 42vw" width={windowWidth>767?windowWidth*.42:windowWidth*.7} height={(windowWidth>767?windowWidth*.42:windowWidth*.7)/ratio} alt='' onLoadingComplete={({ naturalHeight, naturalWidth }) => {
+          setRatio(naturalWidth/naturalHeight);
         }} style={{ margin: "0 auto" }} />
         <div className={`descriptionText descriptionText-${index+1} ${currentProjectTemp.name}`}>
           <h3>{image.description}</h3>

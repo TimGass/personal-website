@@ -4,15 +4,15 @@ export default function Header({ linkArray }) {
   return (
     <header className="header">
       <div className="headerLeft">
-        <Link href="/portfolio" className={linkArray[0]?"active":""}>
+        {!linkArray[0]?<Link href="/portfolio">
           Portfolio
-        </Link>
-        <Link href="/skills" id="skillsLink" className={linkArray[1]?"active":""}>
+        </Link>:null}
+        {!linkArray[1]?<Link href="/skills" id="skillsLink">
           Skills
-        </Link>
-        <Link href="/about" id="aboutLink"  className={linkArray[2]?"active":""}>
+        </Link>:null}
+        {!linkArray[2]?<Link href="/about" id="aboutLink">
           About
-        </Link>
+        </Link>:null}
       </div>
       <div className="headerRight">
         <a href="mailto: timothyagass@gmail.com?subject=Reaching Out&body=Hi,">

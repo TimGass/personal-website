@@ -129,7 +129,6 @@
           margin-left: .5em;
           margin-right: .5em;
           display: inline-block;
-          white-space: nowrap;
         }
 
         div#codeWrapper {
@@ -196,6 +195,10 @@
 
 @media only screen and (max-width: 480px) {
   #projectsPage div#about {
+    div.topImage {
+      width: 70vw;
+    }
+
     p {
       padding-top: 1em;
       font-size: .9em;
@@ -204,25 +207,31 @@
     a {
       width: 100%;
 
-      &:hover {
-        div.descriptionText {
-          top: 10vh;
-          h3 {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 30vh;
-          }
+      &.bottomImage1 {
+        width: 70vw;
+        height: 70vw;
+      }
+
+      div.descriptionText {
+        top: 7vh;
+        h3 {
+          position: -webkit-sticky;
+          position: sticky;
+          top: 30vh;
+          font-size: .9em;
         }
       }
 
-      &#code div#codeImage {
-        float: unset;
-        margin: 0 auto;
+      &#code {
+        div#codeImage {
+          float: unset;
+          margin: 0 auto;
+        }
       }
     }
 
     div.descriptionText-2 {
-      top: 0;
+      top: 20%;
     }
 
     div.descriptionText.Acquali.descriptionText-1 {
@@ -230,14 +239,13 @@
     }
 
     div.descriptionText.Park-A-Lot.descriptionText-2 {
-      top: 0;
+      top: 20%;
     }
   }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
   #projectsPage div#about {
-
     div.topImage {
       height: 52.5vw;
       width: 70vw;
@@ -254,8 +262,17 @@
     a {
       width: 100%;
 
+      &.bottomImage1 {
+        width: 70vw;
+        height: 70vw;
+      }
+
       div.descriptionText {
         top: 30vh;
+      }
+
+      div.descriptionText-2 {
+        top: 35%;
       }
 
       &#code div#codeImage {
@@ -268,8 +285,10 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1280px) {
   #projectsPage div#about {
-    a#code {
-      width: 45%;
+    a {
+      &#code {
+        width: 45%;
+      }
     }
   }
 }

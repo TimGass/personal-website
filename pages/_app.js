@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 import { gtag, install } from 'ga-gtag';
 import Head from 'next/head';
 
+import projectList from '@js/projectList';
+
 function Application({ Component, pageProps }) {
   const router = useRouter();
   const { pathname } = router;
@@ -75,7 +77,7 @@ function Application({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>{project?"Tim Gass":`Tim Gass | ${title}`}</title>
+        {!project?<title>{`Tim Gass | ${title}`}</title>:<title>{`Tim Gass | ${projectList[project].name}`}</title>}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Top linkArray={linkArray} title={title} link={link} name={name} project={project}/>

@@ -3,6 +3,10 @@ import arrow from "../public/down.png";
 import Image from 'next/image';
 import Header from './Header';
 
+import whiteboard from "../public/whiteboard.jpg";
+import books from "../public/books.jpg";
+import mountain from "../public/mountain.jpg";
+
 import styles from '@styles/top.module.css';
 
 import { useEffect } from 'react';
@@ -149,9 +153,9 @@ export default function Top({ linkArray, name, title, link, project }) {
         <div className="scrollbarThumb" />
       </div>
       <div className={linkArray[0]?styles.heroOverlay:"hero-overlay"}>
-        <Image src={'/whiteboard.jpg'} fill sizes='100vw' priority={linkArray[0]} style={linkArray[0]?{ objectFit: 'cover' }:{ visibility: 'hidden'}}/>
-        <Image src={'/books.jpg'} fill sizes='100vw' priority={linkArray[1]} style={linkArray[1]?{ objectFit: 'cover' }:{ visibility: 'hidden'}}/>
-        <Image src={'/mountain.jpg'} fill sizes='100vw' priority={linkArray[2]} style={linkArray[2]?{ objectFit: 'cover' }:{ visibility: 'hidden'}}/>
+        <Image src={whiteboard} fill priority={linkArray[0]} style={linkArray[0]?{ objectFit: 'cover' }:{ visibility: 'hidden'}}/>
+        <Image src={books} fill priority={linkArray[1]} style={linkArray[1]?{ objectFit: 'cover' }:{ visibility: 'hidden'}}/>
+        <Image src={mountain} fill priority={linkArray[2]} style={linkArray[2]?{ objectFit: 'cover' }:{ visibility: 'hidden'}}/>
         <div className={linkArray[0]?styles.hero:"hero"}>
           <Header linkArray={linkArray} />
           <h1 className="title">{title}</h1>

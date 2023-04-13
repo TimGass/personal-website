@@ -3,6 +3,14 @@
   background-color: white;
   padding: 5vh 0;
 
+  div#github-recreation {
+    div#about {
+      div.topImage {
+        height: 21.6906666667vw;
+      }
+    }
+  }
+
   div#about {
     width: 70%;
 
@@ -194,6 +202,10 @@
 }
 
 @media only screen and (max-width: 480px) {
+  #projectsPage div#github-recreation div#about div.topImage {
+    height: 36.1511111111vw;
+  }
+
   #projectsPage div#about {
     div.topImage {
       width: 70vw;
@@ -245,6 +257,9 @@
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
+  #projectsPage div#github-recreation div#about div.topImage {
+      height: 36.1511111111vw;
+    }
   #projectsPage div#about {
     div.topImage {
       height: 52.5vw;

@@ -2,13 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import projectList from '@js/projectList';
 import { useEffect, useState } from 'react';
-import Head from 'next/head';
 
 export default function Project({ project }) {
   let currentProject = { name: null, body: null, code: null, id: null, bottomImages: [], topImage: null };
   const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined"?window.innerWidth:1980);
   const [ratio, setRatio] = useState(1/8);
-  const [topRatio, setTopRatio] = useState(4/3);
 
   const handleResize = () => {
     if(windowWidth !== window.innerWidth) {
@@ -29,15 +27,12 @@ export default function Project({ project }) {
     let currentProjectTemp = projectList[project];
     const images = currentProjectTemp.images.map((image, index) => {
       if(index === 0 && currentProjectTemp.images.length > 1) {
-        return <div className='topImage' style={{ height: (windowWidth>767?windowWidth*.42:windowWidth*.7)/topRatio }}>
+        return <div className='topImage'>
               <Image src={image.src} key={index} alt=''
                 sizes="(max-width: 767px) 70vw,
                         42vw"
-                priority={true}
+                priority
                 fill
-                onLoadingComplete={({ naturalHeight, naturalWidth }) => {
-                  setTopRatio(naturalWidth/naturalHeight);
-                }}
               />
               </div>;
       }
@@ -69,9 +64,6 @@ export default function Project({ project }) {
 
   return (
     <div id="projectsPage">
-      <Head>
-        <title>Tim Gass | {currentProject.name}</title>
-      </Head>
       <div id={currentProject.id}>
         <div id='about'>
           {currentProject.topImage}
@@ -81,12 +73,12 @@ export default function Project({ project }) {
           <p>
             {currentProject.body}
           </p>
-          <a href={currentProject.code} id='code' >
+          {currentProject.code?<a href={currentProject.code} id='code' >
             <p>Check out the code!</p>
             <div id="codeWrapper">
               <div alt='Picture of the GitHub OctoCat.' id='codeImage' />
             </div>
-          </a>
+          </a>:null}
           {currentProject.bottomImages}
           <Link href='/portfolio#projects' id='back'>Back to Portfolio</Link>
         </div>

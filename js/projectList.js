@@ -1,4 +1,36 @@
+import airmoneyTop from "../public/airmoneytop.png";
+import airmoney from "../public/airmoney.png";
+import team from "../public/team.png";
+import parkalot from "../public/park-a-lot.png";
+import parkalotCapture from "../public/park-a-lot-capture.png";
+import chronophobiaMain from "../public/ChronophobiaMain.png";
+import chronophobiaAbout from "../public/ChronophobiaAbout.png";
+import acquali from "../public/Acquali.png";
+import goalsMain from "../public/GoalsMain.png";
+import goalsAbout from "../public/GoalsAbout.png";
+import githubMain from "../public/github-recreation.png";
+import githubAbout from "../public/GitHubAbout.png";
+
+
 const projectList = {
+    ['airmoney']: {
+    name: 'Airmoney',
+    id: 'airmoney',
+    body: [
+      'Airmoney is a startup formed in 2022 and is a peer to peer payment platform which allows user to create anonymous and proximity based payments to users ',
+      'nearby them. While working at the startup as a software developer, I built the website in React, built and oversaw the development of the React Native ',
+      'mobile app, server, database, and security protocols. I also worked in my time there building the registration element of the Flutter mobile app, ',
+      'providing support, and bugfixes, while collaborating with the Flutter development team and designer.'
+    ].reduce((whole, item) => whole + item),
+    images: [
+      { src: airmoneyTop },
+      {
+        src: airmoney,
+        link: 'https://airmoney.app',
+        description: 'Airmoney',
+      },
+    ],
+  },
   ['park-a-lot']: {
     name: 'Park-A-Lot',
     id: 'park-a-lot',
@@ -10,14 +42,14 @@ const projectList = {
       'The Front-End page may need to be refreshed to load as the server host is designed to sleep when inactive.',
     ].reduce((whole, item) => whole + item),
     images: [
-      { src: '/team.png' },
+      { src: team },
       {
-        src: '/Park-A-Lot.png',
+        src: parkalot,
         link: 'https://park-a-lot.netlify.com/',
         description: 'Front-End Application',
       },
       {
-        src: '/park-a-lot-capture.png',
+        src: parkalotCapture,
         link: 'https://park-a-lot.herokuapp.com/api-explorer/',
         description: 'Back-End API',
       },
@@ -33,9 +65,9 @@ const projectList = {
       'The front-end has yet to be developed, as I am still working on my mobile applications development platforms.',
     ].reduce((whole, item) => whole + item),
     images: [
-      { src: '/ChronophobiaMain.png' },
+      { src: chronophobiaMain },
       {
-        src: '/ChronophobiaAbout.png',
+        src: chronophobiaAbout,
         link: 'https://chronophobia.cyclic.app',
         description: 'Chronophobia API',
       },
@@ -52,7 +84,7 @@ const projectList = {
     ].reduce((whole, item) => whole + item),
     images: [
       {
-        src: '/Acquali.png',
+        src: acquali,
         link: 'https://timgass.github.io/acquali-wordcloud',
         description: 'Acquali Wordcloud Web Tool',
       },
@@ -68,9 +100,9 @@ const projectList = {
       'with a PostgreSQL database.',
     ].reduce((whole, item) => whole + item),
     images: [
-      { src: '/GoalsMain.png' },
+      { src: goalsMain },
       {
-        src: '/GoalsAbout.png',
+        src: goalsAbout,
         link: 'https://jaserader.github.io/week10_finalproject_goals/',
         description: 'Goals Website',
       },
@@ -86,32 +118,15 @@ const projectList = {
       'to each of the repos.',
     ].reduce((whole, item) => whole + item),
     images: [
-      { src: '/github-recreation.png' },
+      { src: githubMain },
       {
-        src: '/GitHubAbout.png',
+        src: githubAbout,
         link: 'https://timgass.github.io/homework_week7_tue/',
         description: 'GitHub Recreation',
       },
     ],
     code: 'https://github.com/TimGass/homework_week7_tue',
   },
-  ['powell-peralta-recreation']: {
-    name: 'Powell-Peralta Recration',
-    id: 'powell-peralta-recreation',
-    body: [
-      'This project is a simple recreation of the Powell-Peralta homepage, at the time of its creation. This was one of my first programming assignments, ever, at the Iron Yard Programming Bootcamp ',
-      'in Nashville, TN. The website is made in vanilla JavaScript, HTML, and CSS. It\'s a great example of how far my programming skills have come, since the beginning of my journey.',
-    ].reduce((whole, item) => whole + item),
-    images: [
-      { src: '/PowellPeralta.png' },
-      {
-        src: '/PowellPeraltaAbout.png',
-        link: 'https://timgass.github.io/homework_week2_weekend/',
-        description: 'Powell-Peralta Recreation',
-      },
-    ],
-    code: 'https://github.com/TimGass/homework_week2_weekend',
-  }
 };
 
   export default projectList;

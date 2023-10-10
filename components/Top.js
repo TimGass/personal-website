@@ -3,11 +3,10 @@ import arrow from "../public/down.png";
 import Image from 'next/image';
 import Header from './Header';
 
-import whiteboard from "../public/whiteboard.jpg";
-import books from "../public/books.jpg";
+import whiteboard from "../public/whiteboard2.jpg";
+import books from "../public/books2.jpg";
 import mountain from "../public/mountain.jpg";
 
-import styles from '@styles/top.module.css';
 import StateContext from '@hooks/stateContext';
 
 import { useEffect, useContext } from 'react';
@@ -157,9 +156,9 @@ export default function Top({ project }) {
       <div className="scrollbarTrack">
         <div className="scrollbarThumb" />
       </div>
-      <div className={name==="portfolioPage"?styles.heroOverlay:"hero-overlay"}>
+      <div className={"hero-overlay"}>
         <Image src={topImage} priority fill style={{ objectFit: 'cover' }}/>
-        <div className={name==="portfolioPage"?styles.hero:"hero"}>
+        <div className={"hero"}>
           <Header />
           <h1 className="title">{title}</h1>
           <div className="descriptionLink" style={{ display: 'inline-block' }}>

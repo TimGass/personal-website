@@ -1,13 +1,11 @@
-.notouch {
-  div#portfolioPage .pageDiv {
-    .hero-overlay {
+div#portfolioPage.pageDiv {
+  .hero-overlay {
+    position: relative;
+
+    .hero {
+      height: 100vh;
+      display: block;
       position: relative;
-      .hero {
-        background-color: rgba($color: #211200, $alpha: 0.35);
-        height: 100vh;
-        display: block;
-        position: relative;
-      }
     }
   }
 }

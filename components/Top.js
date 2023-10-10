@@ -8,8 +8,9 @@ import books from "../public/books.jpg";
 import mountain from "../public/mountain.jpg";
 
 import styles from '@styles/top.module.css';
+import StateContext from '@hooks/stateContext';
 
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import $ from 'jquery';
 
 function handleResize() {
@@ -140,24 +141,26 @@ function handleResize() {
   }
 }
 
-export default function Top({ linkArray, name, title, link, project }) {
+export default function Top({ project }) {
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []); // Empty array ensures that effect is only run on mount
 
+  const { link, name, title, linkArray } = useContext(StateContext);
+
+  const topImage = linkArray[2] ? mountain : linkArray[1] ? books : whiteboard;
+
   return (
     <div id={name} className="pageDiv">
       <div className="scrollbarTrack">
         <div className="scrollbarThumb" />
       </div>
-      <div className={linkArray[0]?styles.heroOverlay:"hero-overlay"}>
-        {linkArray[0]?<Image src={whiteboard} fill priority style={{ objectFit: 'cover' }}/>:<Image src={whiteboard} fill style={{ visibility: 'hidden'}}/>}
-        {linkArray[1]?<Image src={books} fill priority style={{ objectFit: 'cover' }}/>:<Image src={books} fill style={{ visibility: 'hidden'}}/>}
-        {linkArray[2]?<Image src={mountain} fill priority style={{ objectFit: 'cover' }}/>:<Image src={mountain} fill style={{ visibility: 'hidden'}}/>}
-        <div className={linkArray[0]?styles.hero:"hero"}>
-          <Header linkArray={linkArray} />
+      <div className={name==="portfolioPage"?styles.heroOverlay:"hero-overlay"}>
+        <Image src={topImage} priority fill style={{ objectFit: 'cover' }}/>
+        <div className={name==="portfolioPage"?styles.hero:"hero"}>
+          <Header />
           <h1 className="title">{title}</h1>
           <div className="descriptionLink" style={{ display: 'inline-block' }}>
             <Link

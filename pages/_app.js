@@ -4,52 +4,61 @@ import 'normalize.css/normalize.css';
 import Top from '@components/Top';
 import Footer from '@components/Footer';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 import { gtag, install } from 'ga-gtag';
 import Head from 'next/head';
 
 import projectList from '@js/projectList';
+import StateContext from '@hooks/stateContext';
+
+
 
 function Application({ Component, pageProps }) {
+
   const router = useRouter();
+
   const { pathname } = router;
   const { project } = router.query;
-  const linkArray = [false, false, false];
-  let name,link,title;
 
-  switch(true) {
+  let state = {
+    link: "#projects",
+    name: "portfolioPage",
+    title: "Portfolio",
+    linkArray: [true, false, false],
+  };
+
+  switch (true) {
     case project: {
-      linkArray[0] = true;
-      link = "#about";
-      name = "portolioPage";
-      title= "Portfolio";
+      state = {
+        link: '#about',
+        name: 'portfolioPage',
+        title: 'Portfolio',
+        linkArray: [true, false, false],
+      };
       break;
     };
-    
+
     case pathname.startsWith('/about'): {
-      name = "aboutPage";
-      link = "#me";
-      title = "About";
-      linkArray[2] = true;
+      state = {
+        link: '#me',
+        name: 'aboutPage',
+        title: 'About',
+        linkArray: [false, false, true],
+      };
       break;
     };
 
     case pathname.startsWith('/skills'): {
-      linkArray[1] = true;
-      name = "skillsPage";
-      link = "#list";
-      title = "Skills";
-      break;
-    }
-
-    default: {
-      linkArray[0] = true;
-      link = "#projects";
-      name = "portolioPage";
-      title= "Portfolio";
+      state = {
+        link: '#list',
+        name: 'skillsPage',
+        title: 'Skills',
+        linkArray: [false, true, false],
+      };
       break;
     }
   }
+  
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -68,21 +77,21 @@ function Application({ Component, pageProps }) {
 
   useEffect(() => {
     install(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS);
-    if (window.innerWidth > 1920 || window.innerHeight > 1080) {
-      window.resizeTo(1920, 1080);
-      window.focus();
-    }
   }, []); // Empty array ensures that effect is only run on mount
 
   return (
     <>
       <Head>
-        {!project?<title>{`Tim Gass | ${title}`}</title>:<title>{`Tim Gass | ${projectList[project].name}`}</title>}
+        {!project?<title>{`Tim Gass | ${state.title}`}</title>:<title>{`Tim Gass | ${projectList[project].name}`}</title>}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Top linkArray={linkArray} title={title} link={link} name={name} project={project}/>
+      <StateContext.Provider value={state}>
+        <Top project={project}/>
+      </StateContext.Provider>
       <Component {...pageProps} project={project}/>
-      <Footer linkArray={linkArray} />
+      <StateContext.Provider value={state}>
+        <Footer />
+      </StateContext.Provider>
     </>
   );
 }

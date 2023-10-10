@@ -1,6 +1,10 @@
 import Link from 'next/link';
+import { useContext } from 'react';
 
-export default function Footer({ linkArray }) {
+import StateContext from '@hooks/stateContext';
+
+export default function Footer() {
+  const { linkArray } = useContext(StateContext);
   return (
     <footer className="footer">
       <Link href="/portfolio" className={linkArray[0]?"active":""}>

@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { useContext } from 'react';
 
-export default function Header({ linkArray }) {
+import StateContext from '@hooks/stateContext';
+
+export default function Header() {
+  const { linkArray } = useContext(StateContext);
   return (
     <header className="header">
       <div className="headerLeft">

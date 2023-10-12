@@ -5,11 +5,11 @@ import Header from './Header';
 
 import whiteboard from "../public/whiteboard2.jpg";
 import books from "../public/books2.jpg";
-import mountain from "../public/mountain.jpg";
+import mountain from "../public/mountain2.jpg";
 
 import StateContext from '@hooks/stateContext';
 
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import $ from 'jquery';
 
 function handleResize() {
@@ -141,13 +141,25 @@ function handleResize() {
 }
 
 export default function Top({ project }) {
+  const [otherImages, setOtherImages] = useState([]);
+
+  const { link, name, title, linkArray } = useContext(StateContext);
+
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
+    if (linkArray[2]) {
+      setOtherImages([<Image key={1} src={whiteboard} fill style={{ visibility: 'hidden' }} />, <Image key={2} src={books} fill style={{ visibility: 'hidden' }} />]);
+    }
+    else if (linkArray[1]) {
+      setOtherImages([<Image key={1} src={mountain} fill style={{ visibility: 'hidden' }} />, <Image key={2} src={whiteboard} fill style={{ visibility: 'hidden' }} />]);
+    }
+    else {
+      setOtherImages([<Image key={1} src={mountain} fill style={{ visibility: 'hidden' }} />, <Image key={2} src={books} fill style={{ visibility: 'hidden' }} />]);
+    }
+
     return () => window.removeEventListener('resize', handleResize);
   }, []); // Empty array ensures that effect is only run on mount
-
-  const { link, name, title, linkArray } = useContext(StateContext);
 
   const topImage = linkArray[2] ? mountain : linkArray[1] ? books : whiteboard;
 
@@ -157,7 +169,8 @@ export default function Top({ project }) {
         <div className="scrollbarThumb" />
       </div>
       <div className={"hero-overlay"}>
-        <Image src={topImage} priority fill style={{ objectFit: 'cover' }}/>
+        <Image src={topImage} priority fill style={{ objectFit: 'cover' }} />
+        {otherImages}
         <div className={"hero"}>
           <Header />
           <h1 className="title">{title}</h1>

@@ -13,7 +13,7 @@ import githubAbout from "../public/GitHubAbout.png";
 
 
 const projectList = {
-    ['airmoney']: {
+  ['airmoney']: {
     name: 'Airmoney',
     id: 'airmoney',
     body: [
@@ -45,12 +45,12 @@ const projectList = {
       { src: team },
       {
         src: parkalot,
-        link: 'https://park-a-lot.netlify.com/',
+        link: 'https://park-a-lot.netlify.app/',
         description: 'Front-End Application',
       },
       {
         src: parkalotCapture,
-        link: 'https://park-a-lot.herokuapp.com/api-explorer/',
+        link: 'https://cartracker-api.fly.dev/api-explorer/',
         description: 'Back-End API',
       },
     ],
@@ -68,7 +68,7 @@ const projectList = {
       { src: chronophobiaMain },
       {
         src: chronophobiaAbout,
-        link: 'https://chronophobia.cyclic.app',
+        link: 'https://chronophobia-api.fly.dev',
         description: 'Chronophobia API',
       },
     ],
@@ -129,4 +129,4 @@ const projectList = {
   },
 };
 
-  export default projectList;
+export default projectList;
